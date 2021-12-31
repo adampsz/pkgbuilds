@@ -1,0 +1,9 @@
+---
+name: 'jcloisterzone'
+url: 'https://jcloisterzone.com/en/'
+filter:
+  - css: '.legacy-downlink'
+
+---
+name: 'jcloisterzone5'
+command: 'git ls-remote --tags "https://github.com/farin/JCloisterZone-Client"'
