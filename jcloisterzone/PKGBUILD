@@ -1,4 +1,4 @@
-pkgname=jcloisterzone5
+pkgname=jcloisterzone
 pkgver=5.9.1
 pkgrel=1
 pkgdesc='Java implementation of Carcassonne board game.'
@@ -25,17 +25,5 @@ build() {
 }
 
 package() {
-    cd "$pkgdir"
-
-    bsdtar -xv -C "." -f "$srcdir/JCloisterZone-Client-$pkgver/build/data.tar.xz"
-    
-    # Rename files to remove conflict with `jcloisterzone`
-    mv ./usr/share/applications/jcloisterzone{,5}.desktop
-    sed -i 's/Icon=jcloisterzone/Icon=jcloisterzone5/g; s/Name=JCloisterZone/Name=JCloisterZone5/g' ./usr/share/applications/jcloisterzone5.desktop
-
-    mv ./usr/share/doc/jcloisterzone{,5}
-
-    for file in ./usr/share/icons/hicolor/*; do
-        mv "$file"/apps/jcloisterzone{,5}.png
-    done
+    bsdtar -xv -C "$pkgdir" -f "$srcdir/JCloisterZone-Client-$pkgver/build/data.tar.xz"
 }

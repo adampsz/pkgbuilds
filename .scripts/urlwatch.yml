@@ -5,5 +5,5 @@ filter:
   - css: '.legacy-downlink'
 
 ---
-name: 'jcloisterzone5'
+name: 'jcloisterzone'
 command: 'git ls-remote --tags "https://github.com/farin/JCloisterZone-Client"'
