@@ -1,0 +1,41 @@
+pkgname=jcloisterzone5
+pkgver=5.9.1
+pkgrel=1
+pkgdesc='Java implementation of Carcassonne board game.'
+arch=('any')
+url="http://jcloisterzone.com/en/"
+license=('AGPL')
+depends=('java-runtime>=11')
+makedepnds=('yarn')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/farin/JCloisterZone-Client/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('d4415f653f777403c95c87b89d3f654f5d5b901fbc5cc3a055d9731d799ea5c4')
+options=('!strip')
+
+build() {
+    cd "$srcdir/JCloisterZone-Client-$pkgver"
+
+    # Patch builder config to produce deb file instead of AppImage
+    sed -i "s/'AppImage'/'deb'/g" builder.config.js
+
+    yarn install --frozen-lockfile
+    yarn run package
+
+    # Extract data
+    bsdtar -xv -C "./build" -f "./build/jcloisterzone-${pkgver}.deb"
+}
+
+package() {
+    cd "$pkgdir"
+
+    bsdtar -xv -C "." -f "$srcdir/JCloisterZone-Client-$pkgver/build/data.tar.xz"
+    
+    # Rename files to remove conflict with `jcloisterzone`
+    mv ./usr/share/applications/jcloisterzone{,5}.desktop
+    sed -i 's/Icon=jcloisterzone/Icon=jcloisterzone5/g; s/Name=JCloisterZone/Name=JCloisterZone5/g' ./usr/share/applications/jcloisterzone5.desktop
+
+    mv ./usr/share/doc/jcloisterzone{,5}
+
+    for file in ./usr/share/icons/hicolor/*; do
+        mv "$file"/apps/jcloisterzone{,5}.png
+    done
+}
