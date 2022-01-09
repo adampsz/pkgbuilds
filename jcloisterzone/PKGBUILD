@@ -2,7 +2,7 @@ pkgname=jcloisterzone
 pkgver=5.9.1
 pkgrel=1
 pkgdesc='Java implementation of Carcassonne board game.'
-arch=('any')
+arch=('x86_64')
 url="http://jcloisterzone.com/en/"
 license=('AGPL')
 depends=('java-runtime>=11')
