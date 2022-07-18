@@ -6,16 +6,20 @@ arch=('x86_64')
 url="http://jcloisterzone.com/en/"
 license=('AGPL')
 depends=('java-runtime>=11')
-makedepnds=('yarn')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/farin/JCloisterZone-Client/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('fd1839513dbff5a9cb341d390d00ce132863fb1d162f9f53e21670b96373a438')
+makedepnds=('yarn' 'libxcrypt-compat')
+source=("https://github.com/farin/JCloisterZone-Client/archive/refs/tags/v${pkgver}.tar.gz"
+        'JCloisterZone-Client.patch')
+sha256sums=('fd1839513dbff5a9cb341d390d00ce132863fb1d162f9f53e21670b96373a438'
+            '18697bee5a84e81768ef48b60c620ac85e71601541b4c810ebbf9fc67a8b6040')
 options=('!strip')
 
-build() {
-    cd "$srcdir/JCloisterZone-Client-$pkgver"
+prepare() {
+    cd "${srcdir}/JCloisterZone-Client-${pkgver}"
+    patch --forward --strip=1 --input="${srcdir}/JCloisterZone-Client.patch"
+}
 
-    # Patch builder config to produce deb file instead of AppImage
-    sed -i "s/'AppImage'/'deb'/g" builder.config.js
+build() {
+    cd "${srcdir}/JCloisterZone-Client-${pkgver}"
 
     yarn install --frozen-lockfile
     yarn run package
@@ -25,5 +29,5 @@ build() {
 }
 
 package() {
-    bsdtar -xv -C "$pkgdir" -f "$srcdir/JCloisterZone-Client-$pkgver/build/data.tar.xz"
+    bsdtar -xv -C "${pkgdir}" -f "${srcdir}/JCloisterZone-Client-${pkgver}/build/data.tar.xz"
 }
