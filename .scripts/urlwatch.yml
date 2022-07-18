@@ -7,3 +7,7 @@ filter:
 ---
 name: 'jcloisterzone'
 command: 'git ls-remote --tags "https://github.com/farin/JCloisterZone-Client"'
+
+---
+name: 'ncspot-premium'
+command: 'git ls-remote --tags "https://github.com/hrkfdn/ncspot"'

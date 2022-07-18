@@ -1,0 +1,12 @@
+diff --color --unified --recursive --text librespot-0.4.1/core/src/connection/handshake.rs librespot-0.4.1.new/core/src/connection/handshake.rs
+--- librespot-0.4.1/core/src/connection/handshake.rs	2022-05-23 21:43:16.000000000 +0200
++++ librespot-0.4.1/core/src/connection/handshake.rs	2022-07-18 18:34:13.123196125 +0200
+@@ -45,7 +45,7 @@
+     let mut packet = ClientHello::new();
+     packet
+         .mut_build_info()
+-        .set_product(protocol::keyexchange::Product::PRODUCT_PARTNER);
++        .set_product(protocol::keyexchange::Product::PRODUCT_CLIENT);
+     packet
+         .mut_build_info()
+         .set_platform(protocol::keyexchange::Platform::PLATFORM_LINUX_X86);
