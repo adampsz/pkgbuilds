@@ -1,0 +1,34 @@
+pkgname=adwcustomizer-git
+pkgver=0.0.0.62bfdbf
+pkgrel=1
+pkgdesc='Tool for customizing Libadwaita applications and the adw-gtk3 theme. '
+arch=('x86_64')
+url='https://github.com/ArtyIF/AdwCustomizer'
+license=(MIT)
+depends=(adw-gtk-theme gtk4 libadwaita-git libportal-gtk4 python python-anyascii)
+makedepends=(git meson appstream-glib blueprint-compiler desktop-file-utils glib2 gobject-introspection)
+provides=(adwcustomizer)
+conflicts=(adwcustomizer)
+source=("git+$url.git"
+        'adwcustomizer.patch')
+sha512sums=('SKIP'
+            '3b2abd51cce321b2f9627015c7e458816de7e64d1f425896ecbbe9c29ecf6d34479778afed32e08238e2132540c2c38be192888a4ce9942909f8df6b82def768')
+
+pkgver() {
+	cd "$srcdir/AdwCustomizer"
+	printf "0.0.0.%s" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+	cd "$srcdir/AdwCustomizer"
+	git apply ../../adwcustomizer.patch
+}
+
+build() {
+	arch-meson "AdwCustomizer" build
+	meson compile -C build
+}
+
+package() {
+	meson install -C build --destdir "$pkgdir"
+}
