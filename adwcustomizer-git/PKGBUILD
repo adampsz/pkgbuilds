@@ -1,22 +1,24 @@
 pkgname=adwcustomizer-git
-pkgver=0.0.0.62bfdbf
+pkgver=r96.a89682d
 pkgrel=1
 pkgdesc='Tool for customizing Libadwaita applications and the adw-gtk3 theme. '
 arch=('x86_64')
 url='https://github.com/ArtyIF/AdwCustomizer'
 license=(MIT)
-depends=(adw-gtk-theme gtk4 libadwaita-git libportal-gtk4 python python-anyascii)
+depends=(gtk4 'libadwaita-git>=1.2.alpha' libportal-gtk4 python python-anyascii)
 makedepends=(git meson appstream-glib blueprint-compiler desktop-file-utils glib2 gobject-introspection)
+optdepends=('adw-gtk3: The theme from libadwaita ported to GTK-3'
+            'adw-gtk-theme: LibAdwaita Theme for all GTK3 and GTK4 Apps.')
 provides=(adwcustomizer)
 conflicts=(adwcustomizer)
 source=("git+$url.git"
         'adwcustomizer.patch')
 sha512sums=('SKIP'
-            '3b2abd51cce321b2f9627015c7e458816de7e64d1f425896ecbbe9c29ecf6d34479778afed32e08238e2132540c2c38be192888a4ce9942909f8df6b82def768')
+            '326a310eca86a3caf490e5036709afcf223369ab3875730881edf471be6589d42fc7c72e99e068c6247488558f5501cbe4773113c9acdf707e4e2b21d3999892')
 
 pkgver() {
 	cd "$srcdir/AdwCustomizer"
-	printf "0.0.0.%s" "$(git rev-parse --short HEAD)"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
