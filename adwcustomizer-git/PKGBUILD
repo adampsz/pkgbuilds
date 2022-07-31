@@ -1,5 +1,5 @@
 pkgname=adwcustomizer-git
-pkgver=r97.dd60896
+pkgver=r124.fca1201
 pkgrel=1
 pkgdesc='Tool for customizing Libadwaita applications and the adw-gtk3 theme. '
 arch=('x86_64')

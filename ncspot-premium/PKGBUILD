@@ -1,7 +1,7 @@
 
 pkgname=ncspot-premium
-pkgver=0.10.0
-pkgrel=2
+pkgver=0.10.1
+pkgrel=1
 pkgdesc="Cross-platform ncurses Spotify client written in Rust, inspired by ncmpc and the likes."
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/hrkfdn/ncspot"
@@ -11,16 +11,16 @@ makedepends=('rust' 'cargo' 'git' 'alsa-lib' 'python' 'pkgconf')
 provides=(ncspot)
 conflicts=(ncspot)
 source=("https://github.com/hrkfdn/ncspot/archive/v${pkgver}.zip"
-        'https://github.com/librespot-org/librespot/archive/v0.4.1.zip'
+        'https://github.com/librespot-org/librespot/archive/v0.4.2.zip'
         'ncspot.patch'
         'librespot.patch')
-sha512sums=('4d71e56f38385f529cb36fb4c589468a0cd5b4504bb400e0b92efdd7dfb36e6d05891ce6f254c0ca4ad8c7c02dce00be5dfac46cd690f8a9382f56f296bec6a2'
-            'cfe6f2cade7315afb46defc24a007b09fe5d69c00f2547ce44b931fb114745f49687205bd3e7d473212b0db761ec790a43b8c39a205064a725f7b5c9c5215907'
-            '3fd97b82547983f4e9708f3aba6c404bda47e74aacc4f1353bf120abf1b0afa7811646c3f915bc6fd3533a8af548a7dfbeffd10653f1adf180700e7247a49d1c'
+sha512sums=('187bb369fa1a4ede52ae04da7a941c9479ed5fe933cd3a51030cb353d38d5ce8fba0b016f1faa81aba7423095aea5c508b5a4798b78b9b9b2b6a68f6749d4d11'
+            'f3cd95cf63eb51c20f13a493443bdba0d3264789d349945ce1f04d93b451c07909b74d203d7db8badda7e951a5f6c208a42fc7b1d6f25b15e5597be450e6cb16'
+            '4996b440e1856aedc6163d7a07c6c61650ebeae13b275c2461112b267c1371242367eae994fed165ac395c146b5294fb34bc5510e82e60eb58ab1d6ea7c461d1'
             '2f1bdd70a90a700e467a211e28827f5ea5f7248cc17b0312ba09cb3f08eceeb5d6f91758bace29dfd8149898a14b52fa027e350f814d003f0ae1acc4df7c78eb')
 
 prepare() {
-  cd "${srcdir}/librespot-0.4.1"
+  cd "${srcdir}/librespot-0.4.2"
   patch --forward --strip=1 --input="${srcdir}/librespot.patch"
 
   cd "${srcdir}/ncspot-${pkgver}"
