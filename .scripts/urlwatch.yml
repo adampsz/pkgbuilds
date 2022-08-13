@@ -13,5 +13,5 @@ name: 'ncspot-premium'
 command: 'git ls-remote --tags "https://github.com/hrkfdn/ncspot"'
 
 ---
-name: 'adwcustomizer-git'
-command: 'git ls-remote "https://github.com/ArtyIF/AdwCustomizer" HEAD'
+name: 'adwcustomizer'
+command: 'git ls-remote --tags "https://github.com/AdwCustomizerTeam/AdwCustomizer"'

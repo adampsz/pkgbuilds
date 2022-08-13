@@ -1,0 +1,30 @@
+pkgname=adwcustomizer
+pkgver=0.1.0
+pkgrel=1
+pkgdesc='Gradience (AdwCustomizer) is a tool for customizing Libadwaita applications and the adw-gtk3 theme.'
+arch=('x86_64')
+url='https://github.com/AdwCustomizerTeam/AdwCustomizer'
+license=(MIT)
+depends=('libadwaita-git>=1.2.alpha' libportal-gtk4 python python-anyascii python-pillow python-regex)
+makedepends=(git meson appstream-glib blueprint-compiler desktop-file-utils gobject-introspection)
+optdepends=('adw-gtk3: The theme from libadwaita ported to GTK-3'
+            'adw-gtk-theme: LibAdwaita Theme for all GTK3 and GTK4 Apps.')
+provides=(adwcustomizer)
+conflicts=(adwcustomizer)
+source=("https://github.com/AdwCustomizerTeam/AdwCustomizer/archive/refs/tags/${pkgver}.zip")
+sha512sums=('e05597ed70e925052b118407e7afad5fd211fa4f6beca268b5bb67d21d2222f0076eb0c5c747667d11c29d86ead7a8fa3aa1417ea719cd4e87adf1f44161fcf0')
+
+build() {
+	pip3 install "AdwCustomizer-${pkgver}/monet/material_color_utilities_python-0.1.0-py3-none-any.whl" -t "${srcdir}/pip"
+	arch-meson "AdwCustomizer-${pkgver}" build
+	meson compile -C build
+}
+
+package() {
+	pysite="$(python -c 'import site; print(site.getsitepackages()[0])')"
+
+	install -d "${pkgdir}/${pysite}"
+	cp -r "${srcdir}/pip/material_color_utilities_python/" "${pkgdir}/${pysite}/material_color_utilities_python" -R
+
+	meson install -C build --destdir "$pkgdir"
+}
