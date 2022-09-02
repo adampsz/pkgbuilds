@@ -12,6 +12,3 @@ command: 'git ls-remote --tags "https://github.com/farin/JCloisterZone-Client"'
 name: 'ncspot-premium'
 command: 'git ls-remote --tags "https://github.com/hrkfdn/ncspot"'
 
----
-name: 'adwcustomizer'
-command: 'git ls-remote --tags "https://github.com/AdwCustomizerTeam/AdwCustomizer"'
