@@ -1,6 +1,6 @@
 pkgname=jcloisterzone
-pkgver=5.10.1
-pkgrel=1
+pkgver=5.12.1
+pkgrel=0
 pkgdesc='Java implementation of Carcassonne board game.'
 arch=('x86_64')
 url="http://jcloisterzone.com/en/"
@@ -9,7 +9,7 @@ depends=('java-runtime>=11')
 makedepends=('yarn' 'libxcrypt-compat')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/farin/JCloisterZone-Client/archive/refs/tags/v${pkgver}.tar.gz"
         'JCloisterZone-Client.patch')
-sha256sums=('fd1839513dbff5a9cb341d390d00ce132863fb1d162f9f53e21670b96373a438'
+sha256sums=('41b7d81f95d7eec250fa77ee481d109b127c71d70e3ca674ee435111460490c8'
             '18697bee5a84e81768ef48b60c620ac85e71601541b4c810ebbf9fc67a8b6040')
 options=('!strip')
 
@@ -21,6 +21,9 @@ prepare() {
 build() {
     cd "${srcdir}/JCloisterZone-Client-${pkgver}"
 
+    export NODE_OPTIONS=--openssl-legacy-provider
+
+    yarn add -D node-sass@=8.0.0
     yarn install --frozen-lockfile
     yarn run package
 
