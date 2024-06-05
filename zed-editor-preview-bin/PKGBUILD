@@ -1,0 +1,22 @@
+# Maintainer:
+# shellcheck shell=ksh disable=SC2034
+pkgname=zed-editor-preview-bin
+pkgver=0.138.3
+pkgrel=1
+pkgdesc="A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter. (binary package)"
+arch=('x86_64')
+url="https://github.com/zed-industries/zed"
+license=('GPL3')
+depends=("alsa-lib" "gcc-libs" "glibc" "libxau" "libxcb" "libxdmcp" "libxkbcommon" "libxkbcommon-x11" "zlib")
+source=("$pkgname-$pkgver.tar.gz::https://zed.dev/api/releases/preview/${pkgver}/zed-linux-x86_64.tar.gz")
+sha256sums=('8efdd078e899e104008c4b2d598f0c2bbde75698af44fb780081eb52649c6d97')
+provides=(zed-editor)
+conflicts=(zed-editor)
+
+package() {
+  cd "zed-preview.app"
+  install -Dm755 "bin/zed" "$pkgdir/usr/bin/zed"
+  install -Dm755 "bin/cli" "$pkgdir/usr/bin/zed-cli"
+  install -Dm644 -t "$pkgdir/usr/share/applications/" "share/applications/zed-preview.desktop"
+  cp -r "share/icons" "$pkgdir/usr/share/"
+}
