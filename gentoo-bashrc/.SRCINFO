@@ -1,0 +1,19 @@
+pkgbase = gentoo-bashrc
+	pkgdesc = This is Gentoo's BASHRC file, which has very nice color schemes.
+	pkgver = 2024.04.30.f7e98e17da6
+	pkgrel = 1
+	url = https://gitweb.gentoo.org/repo/gentoo.git/tree/app-shells/bash/files
+	install = gentoo-bashrc.install
+	arch = any
+	license = GPL
+	optdepends = bash: Shell needed to make use of this package
+	source = bashrc::https://gitweb.gentoo.org/repo/gentoo.git/plain/app-shells/bash/files/bashrc-r1?id=f7e98e17da6c3a9ddecad45d4d6ca5d51261db8a
+	source = 10-gentoo-color.bash::https://gitweb.gentoo.org/repo/gentoo.git/plain/app-shells/bash/files/bashrc.d/10-gentoo-color.bash?id=f7e98e17da6c3a9ddecad45d4d6ca5d51261db8a
+	source = 10-gentoo-title.bash::https://gitweb.gentoo.org/repo/gentoo.git/plain/app-shells/bash/files/bashrc.d/10-gentoo-title.bash?id=f7e98e17da6c3a9ddecad45d4d6ca5d51261db8a
+	source = feed.xml::https://gitweb.gentoo.org/repo/gentoo.git/atom/app-shells/bash?h=f7e98e17da6c3a9ddecad45d4d6ca5d51261db8a
+	sha256sums = ef9954d85dab3fc21a4f53fc99192d5bad80a2047ccbd8febd6d8962f4c36ecd
+	sha256sums = 91557b1c41dbe63764ec3adeafbb2b3f495573f86f46c2be125e022b40e7e7cc
+	sha256sums = 65f8215bcf1a7adaf5f8e8566239537bf4f9c2e44fbddeb4b5cdf09472e795e3
+	sha256sums = 27bf46ad2785333cd76faa3e035eda100d915768fe1d9478cd11e70b21511a35
+
+pkgname = gentoo-bashrc
