@@ -1,0 +1,18 @@
+pkgbase = jcloisterzone4
+	pkgdesc = A Java version of the Carcassonne board game.
+	pkgver = 4.6.1
+	pkgrel = 1
+	url = http://jcloisterzone.com/en/
+	arch = any
+	license = MIT
+	depends = java-runtime>=8
+	source = https://jcloisterzone.com/builds/JCloisterZone-4.6.1.7z
+	source = jcloisterzone
+	source = jcloisterzone.desktop
+	source = jcloisterzone.png
+	sha256sums = 5039457747d32a3e791c0ef41adb278bbfd5a6c9dd493c0365e5429961cab763
+	sha256sums = a7da7c81041d2e34fed08b4b10e27f32655095dc2246bb98b4db4feb48a3e05d
+	sha256sums = f479abd8cacfe0f56b81cc2d260d4b929fdeb35e0612a8a1990df03646e29bea
+	sha256sums = 012a090df7f1fa30fe3ede444eab92cb2f6fd3c37e1b6786f04da9feb3f7cf38
+
+pkgname = jcloisterzone4

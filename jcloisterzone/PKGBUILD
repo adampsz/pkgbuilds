@@ -1,3 +1,5 @@
+# Maintainer:
+# shellcheck shell=ksh disable=SC2034
 pkgname=jcloisterzone
 pkgver=5.12.1
 pkgrel=0
@@ -14,23 +16,23 @@ sha256sums=('41b7d81f95d7eec250fa77ee481d109b127c71d70e3ca674ee435111460490c8'
 options=('!strip')
 
 prepare() {
-    cd "${srcdir}/JCloisterZone-Client-${pkgver}"
-    patch --forward --strip=1 --input="${srcdir}/JCloisterZone-Client.patch"
+  cd "${srcdir}/JCloisterZone-Client-${pkgver}"
+  patch --forward --strip=1 --input="${srcdir}/JCloisterZone-Client.patch"
 }
 
 build() {
-    cd "${srcdir}/JCloisterZone-Client-${pkgver}"
+  cd "${srcdir}/JCloisterZone-Client-${pkgver}"
 
-    export NODE_OPTIONS=--openssl-legacy-provider
+  export NODE_OPTIONS=--openssl-legacy-provider
 
-    yarn add -D node-sass@=8.0.0
-    yarn install --frozen-lockfile
-    yarn run package
+  yarn add -D node-sass@=8.0.0
+  yarn install --frozen-lockfile
+  yarn run package
 
-    # Extract data
-    bsdtar -xv -C "./build" -f "./build/jcloisterzone-${pkgver}.deb"
+  # Extract data
+  bsdtar -xv -C "./build" -f "./build/jcloisterzone-${pkgver}.deb"
 }
 
 package() {
-    bsdtar -xv -C "${pkgdir}" -f "${srcdir}/JCloisterZone-Client-${pkgver}/build/data.tar.xz"
+  bsdtar -xv -C "${pkgdir}" -f "${srcdir}/JCloisterZone-Client-${pkgver}/build/data.tar.xz"
 }

@@ -1,3 +1,5 @@
+# Maintainer:
+# shellcheck shell=ksh disable=SC2034
 pkgname=jcloisterzone4
 pkgver=4.6.1
 pkgrel=1
@@ -16,11 +18,11 @@ sha256sums=('5039457747d32a3e791c0ef41adb278bbfd5a6c9dd493c0365e5429961cab763'
             '012a090df7f1fa30fe3ede444eab92cb2f6fd3c37e1b6786f04da9feb3f7cf38')
 
 package() {
-    install -d "$pkgdir/usr/share"
-    cp -r "$srcdir/JCloisterZone" "$pkgdir/usr/share/"
-    find $pkgdir -type d -exec chmod 755 {} \;
-    find $pkgdir -type f -exec chmod 644 {} \;
-    install -D -m755 "$srcdir/jcloisterzone" "$pkgdir/usr/bin/${pkgname}"
-    install -D -m644 "$srcdir/jcloisterzone.desktop" "$pkgdir/usr/share/applications/${pkgname}.desktop"
-    install -D -m644 "$srcdir/jcloisterzone.png" "$pkgdir/usr/share/pixmaps/${pkgname}.png"
+  install -d "$pkgdir/usr/share"
+  cp -r "$srcdir/JCloisterZone" "$pkgdir/usr/share/"
+  find $pkgdir -type d -exec chmod 755 {} \;
+  find $pkgdir -type f -exec chmod 644 {} \;
+  install -D -m755 "$srcdir/jcloisterzone" "$pkgdir/usr/bin/${pkgname}"
+  install -D -m644 "$srcdir/jcloisterzone.desktop" "$pkgdir/usr/share/applications/${pkgname}.desktop"
+  install -D -m644 "$srcdir/jcloisterzone.png" "$pkgdir/usr/share/pixmaps/${pkgname}.png"
 }
