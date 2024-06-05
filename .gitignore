@@ -1,7 +1,8 @@
+/*/src/
+/*/pkg/
+
 .chroot/
 .repo/*/
-src/
-pkg/
 *.tgz
 *.tar.gz
 *.zip
@@ -20,3 +21,4 @@ pkg/
 *.lz
 *.sign
 *.part
+*.rpm

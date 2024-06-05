@@ -1,0 +1,28 @@
+---
+name: "gentoo-bashrc"
+url: "https://gitweb.gentoo.org/repo/gentoo.git/atom/app-shells/bash/files"
+filter:
+  - shellpipe: |
+      input="$(< /dev/stdin)"
+      commit="$(echo "$input" | grep -Pom1 '(?<=<id>urn:sha1:).*(?=</id>)')"
+      date="$(echo "$input" | grep -Pom1 '(?<=<updated>).{4}-.{2}-.{2}(?=T.{2}:.{2}:.{2}Z</updated>)')"
+      echo -n "${date//-/.}.${commit:0:11}"
+
+---
+name: "jcloisterzone4"
+url: "https://jcloisterzone.com/en/"
+filter:
+  - xpath: "//a[@class='legacy-downlink']/text()"
+  - re.sub: { pattern: 'JCloisterZone\s+(.+)', repl: 'v\1' }
+
+---
+name: "jcloisterzone"
+url: "https://api.github.com/repos/farin/JCloisterZone/tags"
+filter:
+  - shellpipe: "jq -j .[0].name"
+
+---
+name: "typstyle-bin"
+url: "https://api.github.com/repos/Enter-tainer/typstyle/tags"
+filter:
+  - shellpipe: "jq -j .[0].name"
