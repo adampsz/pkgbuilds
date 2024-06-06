@@ -1,0 +1,42 @@
+Only in inter-4.0.orig/src/features: ss06-squared.fea
+diff '--color=auto' --unified --recursive --text inter-4.0.orig/src/Inter-Italic.glyphspackage/fontinfo.plist inter-4.0.new/src/Inter-Italic.glyphspackage/fontinfo.plist
+--- inter-4.0.orig/src/Inter-Italic.glyphspackage/fontinfo.plist	2023-11-20 01:10:26.000000000 +0100
++++ inter-4.0.new/src/Inter-Italic.glyphspackage/fontinfo.plist	2024-06-06 19:00:16.520734134 +0200
+@@ -3124,16 +3124,6 @@
+ tag = ss05;
+ },
+ {
+-code = "include(features/ss06-squared.fea);";
+-labels = (
+-{
+-language = dflt;
+-value = "";
+-}
+-);
+-tag = ss06;
+-},
+-{
+ automatic = 1;
+ code = "sub Abrevedotbelow by Abrevedotbelow.ss07;
+ sub Acircumflexdotbelow by Acircumflexdotbelow.ss07;
+diff '--color=auto' --unified --recursive --text inter-4.0.orig/src/Inter-Roman.glyphspackage/fontinfo.plist inter-4.0.new/src/Inter-Roman.glyphspackage/fontinfo.plist
+--- inter-4.0.orig/src/Inter-Roman.glyphspackage/fontinfo.plist	2023-11-20 01:10:26.000000000 +0100
++++ inter-4.0.new/src/Inter-Roman.glyphspackage/fontinfo.plist	2024-06-06 19:00:29.999493731 +0200
+@@ -3129,17 +3129,6 @@
+ tag = ss05;
+ },
+ {
+-code = "include(features/ss06-squared.fea);
+-";
+-labels = (
+-{
+-language = dflt;
+-value = "";
+-}
+-);
+-tag = ss06;
+-},
+-{
+ automatic = 1;
+ code = "sub Abrevedotbelow by Abrevedotbelow.ss07;
+ sub Acircumflexdotbelow by Acircumflexdotbelow.ss07;

@@ -1,0 +1,30 @@
+# Maintainer:
+# shellcheck shell=ksh disable=SC2034
+pkgname=inter-font-no-ss06
+pkgver=4.0
+pkgrel=1
+pkgdesc="A typeface specially designed for user interfaces (with removed ss06 feature)"
+url="https://github.com/rsms/inter"
+license=(custom:OFL)
+makedepends=(git make python)
+conflicts=(inter-font)
+arch=(any)
+source=("https://github.com/rsms/inter/archive/refs/tags/v$pkgver.zip" no-ss06.patch)
+sha256sums=('8229ef9161ace3795ddc19b225bb93847d380f4d87220cbd5c7b1dd1022583e0' SKIP)
+
+prepare() {
+  cd "inter-$pkgver"
+  patch -p1 -i "$srcdir/no-ss06.patch"
+}
+
+build() {
+  cd "inter-$pkgver"
+  make -j var static
+}
+
+package() {
+  install -Dm644 -t "$pkgdir/usr/share/fonts/inter" "inter-$pkgver/build/fonts/static-hinted/Inter.ttc"
+  install -Dm644 -t "$pkgdir/usr/share/fonts/inter" "inter-$pkgver/build/fonts/var/InterVariable.ttf"
+  install -Dm644 -t "$pkgdir/usr/share/fonts/inter" "inter-$pkgver/build/fonts/var/InterVariable-Italic.ttf"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" "inter-$pkgver/LICENSE.txt"
+}

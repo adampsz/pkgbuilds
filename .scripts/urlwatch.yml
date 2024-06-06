@@ -9,6 +9,12 @@ filter:
       echo -n "${date//-/.}.${commit:0:11}"
 
 ---
+name: "inter-font-no-ss06"
+url: "https://api.github.com/repos/rsms/inter/tags"
+filter:
+  - shellpipe: "jq -j .[0].name"
+
+---
 name: "jcloisterzone4"
 url: "https://jcloisterzone.com/en/"
 filter:

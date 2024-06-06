@@ -1,0 +1,14 @@
+pkgbase = inter-font-no-ss06
+	pkgdesc = A typeface specially designed for user interfaces (with removed ss06 feature)
+	pkgver = 4.0
+	pkgrel = 1
+	url = https://github.com/rsms/inter
+	arch = any
+	license = custom:OFL
+	makedepends = make
+	makedepends = python
+	conflicts = inter-font
+	source = https://github.com/rsms/inter/archive/refs/tags/v4.0.zip
+	sha256sums = 8229ef9161ace3795ddc19b225bb93847d380f4d87220cbd5c7b1dd1022583e0
+
+pkgname = inter-font-no-ss06
