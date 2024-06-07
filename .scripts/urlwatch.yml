@@ -32,3 +32,9 @@ name: "typstyle-bin"
 url: "https://api.github.com/repos/Enter-tainer/typstyle/tags"
 filter:
   - shellpipe: "jq -j .[0].name"
+
+---
+name: "zed-editor-preview-bin"
+url: "https://api.github.com/repos/zed-industries/zed/tags"
+filter:
+  - shellpipe: 'jq -j "limit(1; .[].name | select(endswith(\"-pre\")))"'

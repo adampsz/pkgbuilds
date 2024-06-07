@@ -1,22 +1,24 @@
 # Maintainer:
 # shellcheck shell=ksh disable=SC2034
 pkgname=zed-editor-preview-bin
-pkgver=0.138.3
+pkgver=0.139.3
 pkgrel=1
 pkgdesc="A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter. (binary package)"
 arch=('x86_64')
 url="https://github.com/zed-industries/zed"
 license=('GPL3')
 depends=("alsa-lib" "gcc-libs" "glibc" "libxau" "libxcb" "libxdmcp" "libxkbcommon" "libxkbcommon-x11" "zlib")
-source=("$pkgname-$pkgver.tar.gz::https://zed.dev/api/releases/preview/${pkgver}/zed-linux-x86_64.tar.gz")
-sha256sums=('8efdd078e899e104008c4b2d598f0c2bbde75698af44fb780081eb52649c6d97')
+source=("$pkgname-$pkgver.tar.gz::https://zed.dev/api/releases/preview/${pkgver}/zed-linux-x86_64.tar.gz" zed)
+sha256sums=('1ee13caaec8450398331884202fac814639c287d47b5860c435536f12377bee8'
+            'e7beee071704990ffcc4d79ba92d0451b1e2fb8df1b01f41c157d40a86f6292d')
 provides=(zed-editor)
 conflicts=(zed-editor)
 
 package() {
+  install -Dm755 zed "$pkgdir/usr/bin/zed"
   cd "zed-preview.app"
-  install -Dm755 "bin/zed" "$pkgdir/usr/bin/zed"
-  install -Dm755 "bin/cli" "$pkgdir/usr/bin/zed-cli"
+  install -Dm755 "libexec/zed-editor" "$pkgdir/usr/lib/zed/zed"
+  install -Dm755 "bin/zed" "$pkgdir/usr/lib/zed/zed-cli"
   install -Dm644 -t "$pkgdir/usr/share/applications/" "share/applications/zed-preview.desktop"
   cp -r "share/icons" "$pkgdir/usr/share/"
 }
