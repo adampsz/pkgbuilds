@@ -2,7 +2,7 @@
 # shellcheck shell=ksh disable=SC2034
 _pkgname=typstyle
 pkgname=$_pkgname-bin
-pkgver=0.11.24
+pkgver=0.11.25
 pkgrel=1
 pkgdesc="Beautiful and reliable typst code formatter"
 _arch=('arm64' 'armhf' 'x64')
@@ -12,13 +12,13 @@ license=('Apache-2.0')
 optdepends=("typst: For typst compilation")
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source_x86_64=("$_pkgname::$url/releases/download/v$pkgver/$_pkgname-linux-x64")
-source_armv7h=("$_pkgname::$url/releases/download/v$pkgver/$_pkgname-linux-armhf")
-source_aarch64=("$_pkgname::$url/releases/download/v$pkgver/$_pkgname-linux-arm64")
-sha256sums_aarch64=('ab79fdfac5ddb85a236f4483edfbcc261fca8735b3d9961e124c009e1434c8a4')
-sha256sums_armv7h=('ab79fdfac5ddb85a236f4483edfbcc261fca8735b3d9961e124c009e1434c8a4')
-sha256sums_x86_64=('ab79fdfac5ddb85a236f4483edfbcc261fca8735b3d9961e124c009e1434c8a4')
+source_x86_64=("$url/releases/download/v$pkgver/$_pkgname-linux-x64")
+source_armv7h=("$url/releases/download/v$pkgver/$_pkgname-linux-armhf")
+source_aarch64=("$url/releases/download/v$pkgver/$_pkgname-linux-arm64")
+sha256sums_aarch64=('1cdb2f0d54c0caea7d214369ac64034f0abc7f44158662bad49ca635ced705ad')
+sha256sums_armv7h=('49a6c81764e5b977a36b0f6371f840ddc9165bd7ea7ff7344e8a06cff92cd3c4')
+sha256sums_x86_64=('d9a82dad60f4c29a6185670a18dd84d42c7f81fa87493e0b9ae18f94230556a9')
 
 package() {
-  install -Dm755 "$srcdir/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+  install -Dm755 "$srcdir/$_pkgname-linux-"* "$pkgdir/usr/bin/$_pkgname"
 }
