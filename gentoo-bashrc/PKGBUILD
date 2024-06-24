@@ -1,10 +1,10 @@
 # Maintainer:
 # shellcheck shell=ksh disable=SC2034
 
-_commit=f7e98e17da6c3a9ddecad45d4d6ca5d51261db8a
+_commit=9ff9f8199ccf9d55fb1cf066cbbc791101894ab0
 
 pkgname=gentoo-bashrc
-pkgver=2024.04.30.f7e98e17da6
+pkgver=2024.06.22.9ff9f8199cc
 pkgrel=1
 pkgdesc="This is Gentoo's BASHRC file, which has very nice color schemes."
 arch=('any')
@@ -15,10 +15,10 @@ source=("bashrc::https://gitweb.gentoo.org/repo/gentoo.git/plain/app-shells/bash
         "10-gentoo-color.bash::https://gitweb.gentoo.org/repo/gentoo.git/plain/app-shells/bash/files/bashrc.d/10-gentoo-color.bash?id=$_commit"
         "10-gentoo-title.bash::https://gitweb.gentoo.org/repo/gentoo.git/plain/app-shells/bash/files/bashrc.d/10-gentoo-title.bash?id=$_commit"
         "feed.xml::https://gitweb.gentoo.org/repo/gentoo.git/atom/app-shells/bash?h=$_commit")
-sha256sums=('ef9954d85dab3fc21a4f53fc99192d5bad80a2047ccbd8febd6d8962f4c36ecd'
-            '91557b1c41dbe63764ec3adeafbb2b3f495573f86f46c2be125e022b40e7e7cc'
-            '65f8215bcf1a7adaf5f8e8566239537bf4f9c2e44fbddeb4b5cdf09472e795e3'
-            '27bf46ad2785333cd76faa3e035eda100d915768fe1d9478cd11e70b21511a35')
+sha256sums=('a19a62c8e4a3e2d6622ac874bdd1287bd470802f902275eb6680bc62e79d49f4'
+            '579af0d935be990abc00fc54eeb7439d64b49ca4a1636e16eff950a91a8c76f2'
+            '9aab8042a04a3bb4118341e18a42e8994e3d913d7bc4014a8dbf0fa1eccf1abf'
+            'c42aa93125b171231a6bf896d36ea88f4964285cd8ed7d8de54d6247953e97c3')
 install="${pkgname}.install"
 
 pkgver() {
